@@ -11,13 +11,13 @@ services:
   tomcat:
     build:
       context: ./
-      dockerfile: tomcat.tomalp.Dockerfile
+      dockerfile: tomalp.Dockerfile
     depends_on:
       - buildwar
     ports:
       - '8080:8080'
     volumes:
-      - swapdir:/opt/apache-tomcat-9.0.34/webapps/
+      - swapdir:/opt/tomcat9/webapps/
     #command: tail -f /dev/null
 
 volumes:
