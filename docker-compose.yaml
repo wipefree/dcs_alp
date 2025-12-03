@@ -1,0 +1,25 @@
+---
+services:
+  buildwar:
+    build:
+      context: ./
+      dockerfile: buildwar.Dockerfile
+    volumes:
+      - swapdir:/boxfuse-sample-java-war-hello/target
+    #command: tail -f /dev/null
+
+  tomcat:
+    build:
+      context: ./
+      dockerfile: tomcat.tomalp.Dockerfile
+    depends_on:
+      - buildwar
+    ports:
+      - '8080:8080'
+    volumes:
+      - swapdir:/opt/apache-tomcat-9.0.34/webapps/
+    #command: tail -f /dev/null
+
+volumes:
+  swapdir:
+...
